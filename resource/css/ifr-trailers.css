@@ -41,12 +41,40 @@ html, body {
 .ifr > .trailers > .movieInfo > .details {
 	text-align:left;
 	margin:20px 50px 0;
+	position:relative;
 }
+
+
+
 .ifr > .trailers > .movieInfo > .details > * {
 	padding:10px 0;
 	border-top:1px solid #666;
 	display:block;
 }
+
+.trailers .details > #rating{
+	background-image: url("../images/rating/rating_black_bg.png");
+	background-repeat:no-repeat;
+	background-color:transparent;
+	background-position:-50px 50px;
+    border: medium none navy;
+    display: inline;
+    height: 21px;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: 9px;
+    width: 56px;
+	
+}
+
+#rating.g{ background-position:33px 0 !important}
+#rating.pg{background-position:26px -80px!important}
+#rating.pg-13{background-position:4px -120px !important}
+#rating.nc-17{background-position:0px -160px !important}
+#rating.r{background-position:33px -40px !important}
+
 .ifr > .trailers > .movieInfo > .details > .summary, .ifr > .trailers > .movieInfo > .details > h3 {
 	margin:0;
 }
@@ -57,6 +85,7 @@ html, body {
 
 .ifr > .trailers > .movieInfo > .details > h3 {
 	border:none;
+	padding-right:65px
 }
 .movieInfo > .details table {
 	border:0;

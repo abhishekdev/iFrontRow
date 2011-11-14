@@ -82,6 +82,7 @@ ifr.loadMovieInfo = function(index){
 	$("#movieInfo .poster").attr("src",movie.poster.location);
 	$("#movTrailer").attr("poster",movie.poster.location);
 	$("#movieInfo > .details > h3").text(movie.info.title);
+	$("#movieInfo > .details > #rating").removeAttr("class").addClass(movie.info.rating.toLowerCase());
 	$("#movieInfo > .details > .summary").text(movie.info.description);
 	$("#movieInfo > .details > cite").text(movie.info.copyright);
 	$("#movieInfo .director").text(movie.info.director);
