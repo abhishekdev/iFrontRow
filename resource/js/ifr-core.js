@@ -5,23 +5,37 @@
 
 
 var ifr = {};
-ifr.db = {};
-ifr.db.trailers = null;
-ifr.getTrailerList = function(){
-    $.getJSON('http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20xml%20where%20url=%22trailers.apple.com/trailers/home/xml/current_480p.xml%22&format=json&callback=?', ifr.buildTrailerUI);
-};
+ifr.db = {
+	trailers : null,
+	url : {
+		"1080p":"",
+		"720p":"",
+		"480p" : ""
+	}
+
+}
+
+ifr.db.proc = {
+	importTrailers : function(dbObj){
+		//Create public trailer JS Object DB
+		try{
+			if(dbObj.query.results.records.movieinfo){
+				ifr.db.trailers = dbObj.query.results.records.movieinfo;
+			}
+		}catch(ex){
+			ifr.db.trailers = null;
+		}
+	}
+}
 
 ifr.buildTrailerUI = function(data){
     var items = [], $list ;
     
-	//Create public trailer JS Object DB
-	try{
-        if(data.query.results.records.movieinfo){
-            ifr.db.trailers = data.query.results.records.movieinfo;
-        }
-    }catch(ex){
-        ifr.db.trailers = null;
-    }
+	ifr.db.proc.importTrailers(data);
+	if(!ifr.db.trailers.length) {
+		// Failed to build Trailer Database
+		return;
+	}
 	
 	//Prepare Menu List
     $.each(ifr.db.trailers , function(key, val) {
@@ -35,7 +49,13 @@ ifr.buildTrailerUI = function(data){
 	}).appendTo('.movieList')
 	.find("li:first").addClass("selected")
 	.end().eSlidenav({
-		overlap : 0
+		overlap : 0,
+		resetin: null,
+		onHover :{enter:function(liElem){
+							console.log("Loading: ",$(liElem).children('a')[0].id);
+							ifr.loadMovieInfo($(liElem).children('a')[0].id);
+						}
+				}
 	});	
 	
 	
@@ -53,7 +73,26 @@ ifr.buildTrailerUI = function(data){
         'speedOut'		:	200, 
         'overlayShow'	:	true,
     });
+};
+
+ifr.loadMovieInfo = function(index){
+	var $movInfo = $("#movieInfo"),
+		movie = ifr.db.trailers[index];
+	
+	$("#movieInfo .poster").attr("src",movie.poster.location);
+	$("#movTrailer").attr("poster",movie.poster.location);
+	$("#movieInfo > .details > h3").text(movie.info.title);
+	$("#movieInfo > .details > .summary").text(movie.info.description);
+	$("#movieInfo > .details > cite").text(movie.info.copyright);
+	$("#movieInfo .director").text(movie.info.director);
+	$("#movieInfo .genre").text(movie.genre.name.toString());
+	$("#movieInfo .releasedate").text(movie.info.releasedate);
+	$("#movieInfo .cast").text(movie.cast ? movie.cast.name.toString(): "unlisted");
 }
+
+ifr.getTrailerList = function(){
+    $.getJSON('http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20xml%20where%20url=%22trailers.apple.com/trailers/home/xml/current_480p.xml%22&format=json&callback=?', ifr.buildTrailerUI);
+};
 
 $(function(){
     //ifr.prepareTrailerList();

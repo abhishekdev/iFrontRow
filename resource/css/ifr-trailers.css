@@ -47,9 +47,14 @@ html, body {
 	border-top:1px solid #666;
 	display:block;
 }
-.ifr > .trailers > .movieInfo > .details > p, .ifr > .trailers > .movieInfo > .details > h3 {
+.ifr > .trailers > .movieInfo > .details > .summary, .ifr > .trailers > .movieInfo > .details > h3 {
 	margin:0;
 }
+.ifr > .trailers > .movieInfo > .details > .summary{
+	height:4em;
+	overflow:auto;
+}
+
 .ifr > .trailers > .movieInfo > .details > h3 {
 	border:none;
 }
@@ -162,6 +167,7 @@ html, body {
 
 .dontDisplay{display:none}
 
-.fancybox-overlay{
-	
+#fancybox-overlay{
+	background-color:rgba(0,0,0,0.7) !important;
+	opacity:1 !important;
 }
