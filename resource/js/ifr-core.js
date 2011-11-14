@@ -51,6 +51,7 @@ ifr.buildTrailerUI = function(data){
 	.end().eSlidenav({
 		overlap : 0,
 		resetin: null,
+		autoresizeSelector: true,
 		onHover :{enter:function(liElem){
 							console.log("Loading: ",$(liElem).children('a')[0].id);
 							ifr.loadMovieInfo($(liElem).children('a')[0].id);
@@ -58,6 +59,19 @@ ifr.buildTrailerUI = function(data){
 				}
 	});	
 	
+	// Dynamically resize poster
+	$(window).bind("resize.ifr", resizePoster);
+	
+	
+	function resizePoster(){
+		var $movInfo = $("#movieInfo"),
+			$poster = $movInfo.find(".poster"),
+			$detail = $movInfo.find(".details");
+		
+		$poster.height( $detail.position().top - parseInt($detail.css("bottom")) );
+	}
+	
+	resizePoster();
 	
     $("a.trailerLink").bind("click.ifr",function(e){
         e.preventDefault();
@@ -79,7 +93,7 @@ ifr.loadMovieInfo = function(index){
 	var $movInfo = $("#movieInfo"),
 		movie = ifr.db.trailers[index];
 	
-	$("#movieInfo .poster").attr("src",movie.poster.location);
+	$("#movieInfo .poster").addClass("change").attr("src",movie.poster.location).removeClass("change");
 	$("#movTrailer").attr("poster",movie.poster.location);
 	$("#movieInfo > .details > h3").text(movie.info.title);
 	$("#movieInfo > .details > #rating").removeAttr("class").addClass(movie.info.rating.toLowerCase());
@@ -96,8 +110,8 @@ ifr.getTrailerList = function(){
 };
 
 $(function(){
-    //ifr.prepareTrailerList();
-    ifr.buildTrailerUI(ADB);
+    ifr.getTrailerList();
+    //ifr.buildTrailerUI(ADB);
 });
 
 
