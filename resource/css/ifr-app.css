@@ -1,0 +1,211 @@
+/**
+********************************************* 
+* @fileOverview A set of useful LESS mixins to create dynamic, effiecient and quick CSS
+* @description  Achieved using StyleLibrary 0.1 alpha
+* @author 		Abhishek Dev
+* @date			2011-May-15
+********************************************* 
+*/
+.ifr {
+  min-width: 960px;
+  min-height: 600px;
+  background: #000000;
+  color: #dddddd;
+  height: 100%;
+  position: relative;
+  font-family: "Lucida Grande", "Lucida Console", Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 1.2;
+}
+.ifr > .trailers, .ifr > .config {
+  -webkit-transition: top 0.2s ease-out;
+  -moz-transition: top 0.2s ease-out;
+  -o-transition: top 0.2s ease-out;
+  transition: top 0.2s ease-out;
+}
+.ifr > .config {
+  padding: 0 5px;
+  top: -25px;
+  height: 25px;
+  background-color: #666;
+  background-image: url("../images/bg_linen_med.jpg");
+  -moz-box-shadow: 0 -1px #606060 inset, 0 -2px 0 #9d9d9d inset, 0 -3px 6px #333333 inset;
+  -webkit-box-shadow: 0 -1px #606060 inset, 0 -2px 0 #9d9d9d inset, 0 -3px 6px #333333 inset;
+  box-shadow: 0 -1px #606060 inset, 0 -2px 0 #9d9d9d inset, 0 -3px 6px #333333 inset;
+  background-repeat: repeat-x;
+  background-position: bottom;
+  moz-transform: translate(0pt, -20px);
+  perspective: 1px;
+  overflow: hidden;
+  position: relative;
+}
+.ifr > .config.visible {
+  top: 0px;
+}
+.ifr > .config.visible + .trailers {
+  top: 25px;
+}
+.ifr #ifr-toggleConfig {
+  background: #333;
+  display: block;
+  height: 8px;
+  margin: 0 auto;
+  text-indent: -9999px;
+  width: 30px;
+  cursor: pointer;
+  position: relative;
+  -moz-transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+  -ms-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  transition: all 0.2s;
+}
+.ifr #ifr-toggleConfig:hover {
+  background: #bbb;
+}
+.ifr > .trailers {
+  top: 0px;
+  bottom: 0;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+}
+.ifr > .trailers > .movieInfo, .ifr > .trailers > nav {
+  position: absolute;
+  width: 50%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: auto;
+  text-align: center;
+}
+.ifr > .trailers > .movieInfo padding-top:50px > img {
+  height: 50%;
+  -moz-transition: opacity 0.2s linear 0s;
+  opacity: 1;
+}
+.ifr > .trailers > .movieInfo > img.change {
+  opacity: 0;
+}
+.ifr > .trailers > .movieInfo > .poster {
+  background: url('../images/loader.gif') no-repeat 50% 50%;
+}
+.ifr > .trailers > .movieInfo > .details {
+  text-align: left;
+  margin: 20px 50px 0;
+  position: absolute;
+  bottom: 60px;
+}
+.ifr > .trailers > .movieInfo > .details > * {
+  padding: 10px 0;
+  border-top: 1px solid #666;
+  display: block;
+}
+.ifr > .trailers > .movieInfo > .details  > .summary, .ifr > .trailers > .movieInfo > .details  > h3 {
+  margin: 0;
+}
+.ifr > .trailers > .movieInfo > .details > .summary {
+  height: 4em;
+  overflow: auto;
+}
+.ifr > .trailers > .movieInfo > .details > h3 {
+  border: none;
+  padding-right: 65px;
+}
+.ifr > .trailers > .movieInfo > .details > cite {
+  font-size: 85%;
+  font-style: normal;
+  color: #666;
+}
+.ifr > .trailers > .movieInfo > .details table {
+  border: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
+  max-width: 100%;
+  width: 100%;
+  table-layout: fixed;
+}
+.ifr > .trailers > .movieInfo > .details table th {
+  text-align: right;
+  color: #666;
+  font-weight: normal;
+  padding-right: 4px;
+  width: 75px;
+}
+.ifr > .trailers > .movieInfo > .details table th, .ifr > .trailers > .movieInfo > .details table td {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.ifr > .trailers > nav {
+  right: 0;
+  left: auto;
+}
+.ifr > .trailers > nav h2 {
+  height: 30px;
+  line-height: 30px;
+  margin: 0;
+  padding: 20px;
+}
+.ifr > .trailers > nav > .movieList {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 70px;
+  overflow: auto;
+  margin-bottom: 60px;
+}
+.ifr > .trailers > nav ul {
+  position: relative;
+  list-style: none;
+  padding: 0;
+  margin: 20px 50px;
+}
+.ifr > .trailers > nav ul li {
+  font-size: 140%;
+  text-align: left;
+}
+.ifr > .trailers > nav ul li a {
+  color: #dddddd;
+}
+.ifr > .trailers > nav ul .selector {
+  background: #4c4c4c;
+  background: -moz-linear-gradient(top, #4c4c4c 0%, #666666 2%, #606060 18%, #474747 41%, #2c2c2c 44%, #000000 51%, #111111 60%, #2b2b2b 95%, #1c1c1c 98%, #131313 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #4c4c4c), color-stop(2%, #666666), color-stop(18%, #606060), color-stop(41%, #474747), color-stop(44%, #2c2c2c), color-stop(51%, #000000), color-stop(60%, #111111), color-stop(95%, #2b2b2b), color-stop(98%, #1c1c1c), color-stop(100%, #131313));
+  background: -webkit-linear-gradient(top, #4c4c4c 0%, #666666 2%, #606060 18%, #474747 41%, #2c2c2c 44%, #000000 51%, #111111 60%, #2b2b2b 95%, #1c1c1c 98%, #131313 100%);
+  background: -o-linear-gradient(top, #4c4c4c 0%, #666666 2%, #606060 18%, #474747 41%, #2c2c2c 44%, #000000 51%, #111111 60%, #2b2b2b 95%, #1c1c1c 98%, #131313 100%);
+  background: -ms-linear-gradient(top, #4c4c4c 0%, #666666 2%, #606060 18%, #474747 41%, #2c2c2c 44%, #000000 51%, #111111 60%, #2b2b2b 95%, #1c1c1c 98%, #131313 100%);
+  background: linear-gradient(top, #4c4c4c 0%, #666666 2%, #606060 18%, #474747 41%, #2c2c2c 44%, #000000 51%, #111111 60%, #2b2b2b 95%, #1c1c1c 98%, #131313 100%);
+  box-shadow: 0 0 10px 5px #06F;
+}
+.ifr #rating {
+  background-image: url("../images/rating/rating_black_bg.png");
+  background-repeat: no-repeat;
+  background-color: transparent;
+  background-position: -50px 50px;
+  border: medium none navy;
+  display: inline;
+  height: 21px;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  right: 0;
+  top: 9px;
+  width: 56px;
+}
+.ifr #rating.g {
+  background-position: 33px 0 !important;
+}
+.ifr #rating.pg {
+  background-position: 26px -80px !important;
+}
+.ifr #rating.pg-13 {
+  background-position: 4px -120px !important;
+}
+.ifr #rating.nc-17 {
+  background-position: 0px -160px !important;
+}
+.ifr #rating.r {
+  background-position: 33px -40px !important;
+}

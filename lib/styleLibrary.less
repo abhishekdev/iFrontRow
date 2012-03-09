@@ -1,0 +1,119 @@
+/**
+********************************************* 
+* @fileOverview A set of useful LESS mixins to create dynamic, effiecient and quick CSS
+* @description  Achieved using StyleLibrary 0.1 alpha
+* @author 		Abhishek Dev
+* @date			2011-May-15
+********************************************* 
+*/
+
+#fn {
+    
+    .bordered(@top-color: #EEE, @right-color: #EEE, @bottom-color: #EEE, @left-color: #EEE) {
+    	border-top: solid 1px @top-color;
+    	border-left: solid 1px @left-color;
+    	border-right: solid 1px @right-color;
+    	border-bottom: solid 1px @bottom-color;
+    }
+    
+    .opacity(@opacity: 0.5) {
+    	-moz-opacity: @opacity;
+    	-khtml-opacity: @opacity;
+    	-webkit-opacity: @opacity;
+    	opacity: @opacity;
+    }
+    
+    .setInlineBlock(){
+    	display:-moz-inline-block;
+    	display:inline-block;
+    	*zoom:1;
+    	*display:inline;
+    	_display:inline;
+    }
+    
+    
+    // Shadow
+    // ------------------------------------
+    .drop-shadow(@x-axis: 0, @y-axis: 1px, @blur: 2px, @alpha: 0.1) {
+    	-webkit-box-shadow: @x-axis @y-axis @blur rgba(0, 0, 0, @alpha);
+    	-moz-box-shadow: @x-axis @y-axis @blur rgba(0, 0, 0, @alpha);
+    	box-shadow: @x-axis @y-axis @blur rgba(0, 0, 0, @alpha);
+    }
+    
+    .inner-shadow(@horizontal:0, @vertical:1px, @blur:2px, @alpha: 0.4) {
+    	-webkit-box-shadow: inset @horizontal @vertical @blur rgba(0, 0, 0, @alpha);
+    	-moz-box-shadow: inset @horizontal @vertical @blur rgba(0, 0, 0, @alpha);
+    	box-shadow: inset @horizontal @vertical @blur rgba(0, 0, 0, @alpha);
+    }
+    
+    .box-shadow(@arguments) {
+    	-webkit-box-shadow: @arguments;
+    	-moz-box-shadow: @arguments;
+    	box-shadow: @arguments;
+    }
+    
+    // Border Radius
+    // ------------------------------------
+    .rounded(@radius: 2px) {
+    	-webkit-border-radius: @radius;
+    	-moz-border-radius: @radius;
+    	border-radius: @radius;
+    }
+    .diagnal-rounded(@topLeftBottomRight: 0, @topRightBottomLeft: 0){
+    	-webkit-border-radius: @topLeftBottomRight @topRightBottomLeft;
+    	-moz-border-radius: @topLeftBottomRight @topRightBottomLeft;
+    	border-radius: @topLeftBottomRight @topRightBottomLeft;
+    }
+    .border-radius(@topleft: 0, @topright: 0, @bottomright: 0, @bottomleft: 0) {
+    	-webkit-border-radius: @topleft @topright @bottomright @bottomleft;
+    	-moz-border-radius: @topleft @topright @bottomright @bottomleft;
+    	border-radius: @topleft @topright @bottomright @bottomleft;
+    }
+    .border-top-left-radius(@topleft: 0) {
+    	-webkit-border-top-left-radius: @topleft;
+    	-moz-border-top-left-radius: @topleft;
+    	border-top-left-radius: @topleft;
+    }
+    .border-top-right-radius(@topright: 0) {
+    	-webkit-border-top-right-radius: @topright;
+    	-moz-border-top-right-radius: @topright;
+    	border-top-right-radius: @topright;
+    }
+    .border-bottom-right-radius(@bottomright: 0) {
+    	-webkit-border-bottom-right-radius: @bottomright;
+    	-moz-border-bottom-right-radius: @bottomright;
+    	border-bottom-right-radius: @bottomright;
+    }
+    .border-bottom-left-radius(@bottomleft: 0) {
+    	-webkit-border-bottom-left-radius: @bottomleft;
+    	-moz-border-bottom-left-radius: @bottomleft;
+    	border-bottom-left-radius: @bottomleft;
+    }
+    
+    
+    // Animation
+    // ------------------------------------
+    .transition-duration(@duration: 0.2s) {
+    	-moz-transition-duration: @duration;
+    	-webkit-transition-duration: @duration;
+    	-o-transition-duration: @duration;
+    	transition-duration: @duration;
+    }
+    .transition(@prop: all, @duration:0.2s, @ease:ease-out) {
+    	-webkit-transition: @prop @duration @ease;
+    	-moz-transition: @prop @duration @ease;
+    	-o-transition: @prop @duration @ease;
+    	transition: @prop @duration @ease;
+    }
+    .rotation(@deg:5deg){ 
+    	-webkit-transform: rotate(@deg);
+    	-moz-transform: rotate(@deg);
+    	transform: rotate(@deg);
+    }
+    .scale(@ratio:1.5){
+    	-webkit-transform:scale(@ratio);
+     	-moz-transform:scale(@ratio);
+    	transform:scale(@ratio);
+    }
+}
+

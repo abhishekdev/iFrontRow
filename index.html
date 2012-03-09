@@ -1,0 +1,132 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <title>iFront-Row</title>
+        <meta name="description" content="">
+        <meta name="author" content="Abhishek Dev">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <link rel="stylesheet" href="resource/css/eSlidenav.css"/>
+        <link rel="stylesheet" href="resource/css/global.css"/>
+        <link rel="stylesheet" href="resource/css/ifr-app.css"/>
+        <link rel="stylesheet" href="lib/fancybox/jquery.fancybox-1.3.4.css"/>
+        <script src="lib/modernizr.all.min.js"></script>
+    </head>
+
+    <body>
+        <div id="ifr" class="ifr">
+            <aside class="config">
+                <select id="ifr_resolution">
+                    <option value="480">480p</option>
+                    <option value="720">720p</option>
+                </select>
+                <input id="ifr_updateDbBtn" type="button" value="Force Fetch Trailer List"/>
+            </aside>
+
+            <section class="trailers">
+
+                <section id="movieInfo" class="movieInfo"> 
+                    <img class="poster" src="" />
+                    <div class="details">
+                        <h3>Inception</h3>
+                        <img id="rating" class="g" src="resource/images/clear-pixel.gif"/>
+                        <div class="summary">
+                            <p>Seduced by the challenge of an impossible case, the driven Dr. Carl Jung (Michael Fassbender) takes the unbalanced yet beautiful Sabina Spielrein (Keira Knightley) as his patient in A DANGEROUS METHOD. Jung’s weapon is the method of his master, the renowned Sigmund Freud (Viggo Mortensen). Both men fall under Sabina’s spell.</p>
+                        </div>
+                        <aside>
+                            <table>
+                                <tr>
+                                    <th>Actors</th>
+                                    <td class="cast">Keira Knightley, Viggo Mortensen, Michael Fassbender, Vincent Cassel</td>
+                                </tr>
+                                <tr>
+                                    <th>Director</th>
+                                    <td class="director">David Cronenberg</td>
+                                </tr>
+                                <tr>
+                                    <th>Genre</th>
+                                    <td class="genre">Drama</td>
+                                </tr>
+                                <tr>
+                                    <th>In Theaters</th>
+                                    <td class="releasedate">2011-11-23</td>
+                                </tr>
+                            </table>
+                        </aside>
+                        <cite>Copyright &copy; 2011 Sony Pictures Classics</cite> </div>
+                </section>
+
+                <nav>
+                    <h2>Theatrical Trailers</h2>
+                    <div class="movieList"></div>
+                </nav>
+
+                <a href="#" id="ifr-toggleConfig">Show/Hide Config</a>
+
+            </section>
+
+            <div id="ifr-templates" class="dontDisplayStrict">
+                <!--                <video poster="" src="" width="854" height="480" type="video/mp4" x-webkit-airplay="allow" controls autoplay>
+                                    <p>Your browser does not support the available video format.</p>
+                                </video>
+                                <embed src=""
+                                       width="854" 
+                                       height="480" 
+                                       volume="100"
+                                       autostart="true"
+                                       airplay="allow"/>-->
+            </div>
+
+        </div>
+        <!--
+        src="http://trailers.apple.com/movies/independent/touchback/touchback-tlr1_r640s.mov?width=640&amp;height=360"
+        -->
+
+
+        <!--        <video class="video" 
+                    type="video/mp4" 
+                    x-webkit-airplay="allow" 
+                    autoplay controls
+                    width="640" 
+                    height="360"
+                    src="http://trailers.apple.com/movies/marvel/theavengers/avengers-7c7b7a-tlr3_480p.mov"
+                    poster=""
+                    >
+                </video>-->
+
+
+        <!--
+        <embed src="http://trailers.apple.com/movies/marvel/theavengers/avengers-7c7b7a-tlr3_480p.mov"
+                width="854" 
+                height="480" 
+                volume="100"
+                autostart="true"
+                airplay="allow"/>
+        -->
+
+        <!--        <embed volume="100" autostart="true" airplay="allow" width="854" height="480" 
+                       style="width: 854px; height: 480px; display: none" 
+                       id="movTrailer" 
+                       src="http://trailers.apple.com/movies/marvel/theavengers/avengers-7c7b7a-tlr3_480p.mov">-->
+
+        <!--                 <embed volume="100" autostart="true" airplay="allow" width="854" height="480" 
+                               id="movTrailer" 
+                               src="http://trailers.apple.com/movies/universal/despicableme2/despicableme2-tsr1_480p.mov"/>-->
+        <!--                 <embed volume="100" autostart="true" airplay="allow" width="854" height="480" 
+                               id="movTrailer" 
+                               src=" http://trailers.apple.com/movies/sony_pictures/21jumpstreet/21jumpstreet-tlr1_480p.mov">
+        -->
+
+
+        <script src="lib/jquery-1.6.4.js"></script> 
+        <script src="lib/jQueryUI/jquery-ui-1.8.16.custom.min.js"></script> 
+        <script src="lib/fancybox/jquery.fancybox-1.3.4.js"></script> 
+        <script src="lib/jquery.media.js"></script> 
+        <script src="lib/ui-slideSelectorNav.js"></script> 
+        <script src="resource/js/ifr-core.js"></script> 
+        <script src="resource/js/offlineTestDB.js"></script>
+    </body>
+</html>
