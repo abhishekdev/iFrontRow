@@ -29,7 +29,7 @@ Safari 5
 
 ## Release History ##
 This is a pre-release version and is bound to contain many glitches and change frequently.
-The project is hosted at: http://ifrontrows/appspot.com
+The project is hosted at: http://ifrontrows.appspot.com
 
 ## License ##
 Copyright (c) 2011 Abhishek Dev
