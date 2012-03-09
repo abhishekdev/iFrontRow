@@ -25,8 +25,8 @@
 }
 .ifr > .config {
   padding: 0 5px;
-  top: -25px;
-  height: 25px;
+  top: -35px;
+  height: 35px;
   background-color: #666;
   background-image: url("../images/bg_linen_med.jpg");
   -moz-box-shadow: 0 -1px #606060 inset, 0 -2px 0 #9d9d9d inset, 0 -3px 6px #333333 inset;
@@ -43,10 +43,15 @@
   top: 0px;
 }
 .ifr > .config.visible + .trailers {
-  top: 25px;
+  top: 35px;
+}
+.ifr > .config .share {
+  position: absolute;
+  right: 5px;
+  top: 5px;
 }
 .ifr #ifr-toggleConfig {
-  background: #333;
+  background: #dedede url("../images//hgrabber.gif") repeat-x 50% 1px;
   display: block;
   height: 8px;
   margin: 0 auto;
@@ -54,14 +59,26 @@
   width: 30px;
   cursor: pointer;
   position: relative;
-  -moz-transition: all 0.2s;
-  -webkit-transition: all 0.2s;
-  -ms-transition: all 0.2s;
-  -o-transition: all 0.2s;
-  transition: all 0.2s;
+  z-index: 3;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+  -webkit-border-radius: 0 0 50px 50px;
+  -moz-border-radius: 0 0 50px 50px;
+  border-radius: 0 0 50px 50px;
 }
 .ifr #ifr-toggleConfig:hover {
-  background: #bbb;
+  height: 12px;
+  background: #666;
+}
+.ifr .auxBtn {
+  position: absolute;
+  left: 5px;
+  top: 5px;
+}
+.ifr .auxBtn #ifr_updateDbBtn, .ifr .auxBtn #ifr_aboutBtn {
+  font-size: larger;
 }
 .ifr > .trailers {
   top: 0px;
@@ -69,6 +86,23 @@
   width: 100%;
   position: absolute;
   z-index: 1;
+}
+.ifr > .trailers .ifr-overlay {
+  position: absolute;
+  top: 0px;
+  z-index: 2;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+  visibility: hidden;
+  -webkit-transition: background-color 0.2s ease-out;
+  -moz-transition: background-color 0.2s ease-out;
+  -o-transition: background-color 0.2s ease-out;
+  transition: background-color 0.2s ease-out;
+}
+.ifr > .trailers.disabled .ifr-overlay {
+  visibility: visible;
+  background-color: rgba(0, 0, 0, 0.8);
 }
 .ifr > .trailers > .movieInfo, .ifr > .trailers > nav {
   position: absolute;
@@ -89,6 +123,11 @@
 }
 .ifr > .trailers > .movieInfo > .poster {
   background: url('../images/loader.gif') no-repeat 50% 50%;
+  margin-top: 30px;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
 }
 .ifr > .trailers > .movieInfo > .details {
   text-align: left;
@@ -208,4 +247,33 @@
 }
 .ifr #rating.r {
   background-position: 33px -40px !important;
+}
+.ifr .about {
+  position: absolute;
+  z-index: 9999;
+  width: 512px;
+  margin-left: -291px;
+  padding: 30px;
+  top: -1000px;
+  left: 50%;
+  background: #efefef;
+  color: #333;
+  border: 5px solid rgba(0, 0, 0, 0.5);
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  -webkit-transition: top 0.7s ease-out;
+  -moz-transition: top 0.7s ease-out;
+  -o-transition: top 0.7s ease-out;
+  transition: top 0.7s ease-out;
+}
+.ifr .about.show {
+  top: 65px;
+}
+.ifr .about .close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  height: 20px;
+  width: 20px;
 }

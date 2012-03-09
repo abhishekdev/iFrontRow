@@ -1,126 +1,136 @@
 <!doctype html>
-<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
-<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en" itemscope itemtype="http://schema.org/Product"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en" itemscope itemtype="http://schema.org/Product"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en" itemscope itemtype="http://schema.org/Product"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" itemscope itemtype="http://schema.org/Product"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
         <title>iFront-Row</title>
-        <meta name="description" content="">
+        <meta name="description" content="iFrontRow is the web resurrection of Apple (c) FrontRow">
         <meta name="author" content="Abhishek Dev">
         <meta name="viewport" content="width=device-width,initial-scale=1">
+        <meta property="og:title" content="iFrontRow" />
+        <meta property="og:type" content="movie" />
+        <meta property="og:url" content="http://ifrontrows.appspot.com/" />
+        <meta property="og:image" content="" />
+        <meta property="og:site_name" content="iFrontRow" />
+        <meta property="fb:admins" content="100000337500038" />
+        <meta itemprop="name" content="iFrontRow"/>
+		<meta itemprop="description" content="iFrontRow is the web resurrection of Apple (c) FrontRow. For all who liked to watch Apple trailers but now on web"/>
         <link rel="stylesheet" href="resource/css/eSlidenav.css"/>
         <link rel="stylesheet" href="resource/css/global.css"/>
         <link rel="stylesheet" href="resource/css/ifr-app.css"/>
         <link rel="stylesheet" href="lib/fancybox/jquery.fancybox-1.3.4.css"/>
         <script src="lib/modernizr.all.min.js"></script>
+        <script type="text/javascript">
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-29849109-1']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+        </script>
     </head>
 
     <body>
+   
         <div id="ifr" class="ifr">
             <aside class="config">
-                <select id="ifr_resolution">
-                    <option value="480">480p</option>
-                    <option value="720">720p</option>
-                </select>
-                <input id="ifr_updateDbBtn" type="button" value="Force Fetch Trailer List"/>
+                <div class="auxBtn"><input id="ifr_updateDbBtn" class="dontDisplay" type="button" value="Force Fetch Trailer List"/>
+                <input id="ifr_aboutBtn" type="button" value="About"/>
+                </div>
+                <div class="share">
+                    <div class="g-plusone" data-size="medium" data-href="http://ifrontrows.appspot.com/"></div>
+                     <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://ifrontrows.appspot.com/" data-text="Check out iFrontRow to (re)watch trailers the FrontRow style" data-via="abhishekdev" data-related="abhishekdev" data-hashtags="iFrontRow">Tweet</a>
+                    <div class="fb-like" data-href="http://ifrontrows.appspot.com/" data-send="true" data-layout="button_count" data-width="160" data-show-faces="false"></div>
+                </div>
             </aside>
-
             <section class="trailers">
-
-                <section id="movieInfo" class="movieInfo"> 
-                    <img class="poster" src="" />
+                <section id="movieInfo" class="movieInfo"> <img class="poster" src="cp.gif" alt="poster" />
                     <div class="details">
-                        <h3>Inception</h3>
-                        <img id="rating" class="g" src="resource/images/clear-pixel.gif"/>
+                        <h3></h3>
+                        <img id="rating" class="" src="cp.gif" alt="movie rating"/>
                         <div class="summary">
-                            <p>Seduced by the challenge of an impossible case, the driven Dr. Carl Jung (Michael Fassbender) takes the unbalanced yet beautiful Sabina Spielrein (Keira Knightley) as his patient in A DANGEROUS METHOD. Jung’s weapon is the method of his master, the renowned Sigmund Freud (Viggo Mortensen). Both men fall under Sabina’s spell.</p>
+                            <p></p>
                         </div>
                         <aside>
                             <table>
                                 <tr>
                                     <th>Actors</th>
-                                    <td class="cast">Keira Knightley, Viggo Mortensen, Michael Fassbender, Vincent Cassel</td>
+                                    <td class="cast"></td>
                                 </tr>
                                 <tr>
                                     <th>Director</th>
-                                    <td class="director">David Cronenberg</td>
+                                    <td class="director"></td>
                                 </tr>
                                 <tr>
                                     <th>Genre</th>
-                                    <td class="genre">Drama</td>
+                                    <td class="genre"></td>
                                 </tr>
                                 <tr>
-                                    <th>In Theaters</th>
-                                    <td class="releasedate">2011-11-23</td>
+                                    <th>In Theatre</th>
+                                    <td class="releasedate"></td>
                                 </tr>
                             </table>
                         </aside>
-                        <cite>Copyright &copy; 2011 Sony Pictures Classics</cite> </div>
+                        <cite></cite>
+                    </div>
                 </section>
-
                 <nav>
                     <h2>Theatrical Trailers</h2>
                     <div class="movieList"></div>
                 </nav>
-
                 <a href="#" id="ifr-toggleConfig">Show/Hide Config</a>
-
+                <div class="ifr-overlay"></div>
             </section>
-
-            <div id="ifr-templates" class="dontDisplayStrict">
-                <!--                <video poster="" src="" width="854" height="480" type="video/mp4" x-webkit-airplay="allow" controls autoplay>
-                                    <p>Your browser does not support the available video format.</p>
-                                </video>
-                                <embed src=""
-                                       width="854" 
-                                       height="480" 
-                                       volume="100"
-                                       autostart="true"
-                                       airplay="allow"/>-->
+            <div id="ifr-templates" class="dontDisplayStrict"></div>
+            <div id="ifr-about" class="about">
+            	<a class="close">x</a>
+            	<h2>About iFrontRow</h2>
+                <dl>
+                <dt><h4>Resurrected By</h4></dt>
+                <dd><p>Abhishek Dev<p></dd>
+                <dt><h4>Credits</h4></dt>
+                <dd>
+                	<p>
+                        GUI shamelessly adapted from the original Apple (c) Front Row Application<br/>
+                        iFrontRow name suggested by anshul10s (Anshul Gupta)
+                    </p>
+                </dd>
+                <dt><h4>Made Using<h4></dt>
+                <dd>
+                	<p>
+                	jQuery & jQuery UI<br/>
+                    jQuery eSlidenav plugin<br/>
+                    jQuery fancybox plugin<br/>
+                    Modernizr<br/>
+                    iTunes Service (trailers.apple.com)
+                    </p>
+                    </dd>
+                <dt><h4>License<h4></dt>
+                <dd>
+                	<p>
+                	Source available under the <a href="http://bit.ly/abhishekdevMIT-License">MIT License</a><br/>
+                    Fork at <a href="http://github.com/abhishekdev/iFrontRow" target="_blank">http://github.com/abhishekdev/iFrontRow</a>
+                    </p>
+                    </dd>
+                </dl>
+                <dt><h4>NOTES and Known Issues<h4></dt>
+                <dd>
+                	<p>
+                    - Trailers run best in Safari on Mac.<br/>
+                    - Please report any bugs or requests at <a href="https://github.com/abhishekdev/iFrontRow/issues" target="_blank">Github Issues Page</a>.<br/>
+                    - Chrome/Opera fail to run trailer on second run (Fix coming ASAP).<br/>
+                    - Quick Time Player is required to be installed for other devices.
+                	</p>
+                    </dd>
+                </dl>
             </div>
-
         </div>
-        <!--
-        src="http://trailers.apple.com/movies/independent/touchback/touchback-tlr1_r640s.mov?width=640&amp;height=360"
-        -->
-
-
-        <!--        <video class="video" 
-                    type="video/mp4" 
-                    x-webkit-airplay="allow" 
-                    autoplay controls
-                    width="640" 
-                    height="360"
-                    src="http://trailers.apple.com/movies/marvel/theavengers/avengers-7c7b7a-tlr3_480p.mov"
-                    poster=""
-                    >
-                </video>-->
-
-
-        <!--
-        <embed src="http://trailers.apple.com/movies/marvel/theavengers/avengers-7c7b7a-tlr3_480p.mov"
-                width="854" 
-                height="480" 
-                volume="100"
-                autostart="true"
-                airplay="allow"/>
-        -->
-
-        <!--        <embed volume="100" autostart="true" airplay="allow" width="854" height="480" 
-                       style="width: 854px; height: 480px; display: none" 
-                       id="movTrailer" 
-                       src="http://trailers.apple.com/movies/marvel/theavengers/avengers-7c7b7a-tlr3_480p.mov">-->
-
-        <!--                 <embed volume="100" autostart="true" airplay="allow" width="854" height="480" 
-                               id="movTrailer" 
-                               src="http://trailers.apple.com/movies/universal/despicableme2/despicableme2-tsr1_480p.mov"/>-->
-        <!--                 <embed volume="100" autostart="true" airplay="allow" width="854" height="480" 
-                               id="movTrailer" 
-                               src=" http://trailers.apple.com/movies/sony_pictures/21jumpstreet/21jumpstreet-tlr1_480p.mov">
-        -->
-
-
+     
         <script src="lib/jquery-1.6.4.js"></script> 
         <script src="lib/jQueryUI/jquery-ui-1.8.16.custom.min.js"></script> 
         <script src="lib/fancybox/jquery.fancybox-1.3.4.js"></script> 
@@ -128,5 +138,17 @@
         <script src="lib/ui-slideSelectorNav.js"></script> 
         <script src="resource/js/ifr-core.js"></script> 
         <script src="resource/js/offlineTestDB.js"></script>
+        
+        
+        <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+        <div id="fb-root"></div>
+		<script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
     </body>
 </html>

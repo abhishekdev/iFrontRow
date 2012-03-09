@@ -22,7 +22,7 @@
     }
     
      >  .config {
-        @height: 25px;
+        @height: 35px;
          
         padding:0 5px;
         top:-@height;
@@ -46,10 +46,16 @@
                 top: @height
             }
         }
+        
+        .share{
+            position: absolute;
+            right: 5px;
+            top: 5px;
+        }
     }
     
     #ifr-toggleConfig {
-        background:#333;
+        background: #dedede url("@{imageURL}/hgrabber.gif") repeat-x 50% 1px;
     	display: block;
     	height: 8px;
     	margin: 0 auto;
@@ -57,16 +63,27 @@
     	width: 30px;
     	cursor:pointer;
     	position:relative;
-    	-moz-transition:all 0.2s;
-    	-webkit-transition:all 0.2s;
-    	-ms-transition:all 0.2s;
-    	-o-transition:all 0.2s;
-    	transition:all 0.2s;
+        z-index: 3;
+    	#fn > .transition();
+        #fn > .border-radius(0,0,50px, 50px);
 
         &:hover{
-            background:#bbb;
+            height: 12px;
+            background:#666;
         }
     }
+    
+    .auxBtn{
+        position: absolute;
+        left: 5px;
+        top: 5px;
+        
+        #ifr_updateDbBtn, & #ifr_aboutBtn{
+           font-size: larger;
+        }
+    }
+    
+    
     
     > .trailers {
         top:0px;
@@ -74,6 +91,23 @@
     	width:100%;
     	position:absolute;
     	z-index:1;
+        
+        .ifr-overlay{
+            position: absolute;
+            top: 0px;
+            z-index: 2;
+            height: 100%;
+            width: 100%;
+            background-color: rgba(0,0,0,0.1);
+            visibility: hidden;
+            #fn > .transition(background-color);
+        }
+        
+        &.disabled .ifr-overlay{
+            visibility: visible;
+            background-color: rgba(0,0,0,0.8);
+        }
+        
         
         > .movieInfo, > nav {
             position:absolute;
@@ -100,6 +134,8 @@
             
             > .poster{
                 background: url('@{imageURL}loader.gif') no-repeat 50% 50%;
+                margin-top: 30px;
+                #fn > .transition();
             }
             
             > .details {
@@ -228,5 +264,32 @@
         &.pg-13 {background-position:4px -120px !important}
         &.nc-17 {background-position:0px -160px !important}
         &.r {background-position:33px -40px !important}
+    }
+    
+    .about {
+        position: absolute;
+        z-index: 9999;
+        width: 512px;
+        margin-left: -291px;
+        padding: 30px;
+        top: -1000px;
+        left: 50%;
+        background: #efefef;
+        color: #333;
+        border: 5px solid rgba(0,0,0,0.5);
+        #fn > .rounded(10px);
+        #fn > .transition(top,0.7s);
+         
+        &.show{
+            top: 65px;
+        }
+        
+        .close{
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            height: 20px;
+            width: 20px;
+        }
     }
 }

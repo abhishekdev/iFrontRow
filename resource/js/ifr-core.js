@@ -1,5 +1,24 @@
+/** @license
+iFrontRow- v1.0.0
+Copyright (C) 2012 by Abhishek Dev
+MIT License @ http://bit.ly/abhishekdevMIT-License
+*/
+/*!
+iFrontRow- v1.0.0
+Copyright (C) 2012 by Abhishek Dev
+MIT License @ http://bit.ly/abhishekdevMIT-License
+*/
+
+
 // core application namespace
-var ifr = {};
+var ifr = {
+		about: {
+			author: "Abhishek Dev",
+			version: "1.0.0",
+			credits: "GUI shamelessly adapted from the original Apple (c) FrontRow\n"+
+					  "iFrontRow name suggestion by Anshul Gupta (anshul10s)\n"
+		}
+	};
 
 // global debug flag for the application
 ifr.debug = 0;
@@ -35,13 +54,12 @@ ifr.db.proc = {
             }
             
         }catch(ex){
-            console.log("---->", ex);
             ifr.db.trailers = null;
         }
     }
 };
 
-var $appVideo;
+
 // build the trailer UI from data. Populate UI with info. Initialize events
 ifr.buildTrailerUI = function(data){
     var items = [],
@@ -49,7 +67,7 @@ ifr.buildTrailerUI = function(data){
         width:854,
         height: 480
     },
-    $list ;
+    $list,$appVideo;
 
     data && ifr.db.proc.importTrailers(data);
     if(!ifr.db.trailers.length) {
@@ -57,7 +75,9 @@ ifr.buildTrailerUI = function(data){
         return;
     }
     
-    
+    $("#ifr_aboutBtn, #ifr-about .close").bind("click.toggleAbout",function(e){
+		$("#ifr-about").toggleClass("show");
+	});
     
     
 	
@@ -68,6 +88,8 @@ ifr.buildTrailerUI = function(data){
 	
     $("#ifr-toggleConfig").bind("click.toggleConfig",function(e){
         $("#ifr > .config").toggleClass("visible");
+		 $("#ifr > .trailers").toggleClass("disabled");
+		setTimeout(_resizePoster,200);
     });
 
     // Create the menu list, Mark the first item as selected and initialize the navigation
@@ -83,13 +105,13 @@ ifr.buildTrailerUI = function(data){
         autoresizeSelector: true,
         onHover :{
             enter:function(liElem){
-                console.log("Loading: ",$(liElem).children('a')[0].id);
+                //console.log("Loading: ",$(liElem).children('a')[0].id);
                 ifr.loadMovieInfo($(liElem).children('a')[0].id);
             }
         }
     });	
     
-    $(".sliderNav > li:first > a").focus();
+    $(".sliderNav > li:first > a").trigger("mouseenter").focus();
     
     _setPlaybackMode();
     
@@ -138,7 +160,7 @@ ifr.buildTrailerUI = function(data){
         $that = $(that),
         $embed;
         
-        console.log('video error')
+        //console.log('video error');
         
         /*
         * MEDIA_ERR_ABORTED: 1
@@ -184,18 +206,16 @@ ifr.buildTrailerUI = function(data){
             "href" : movsrc
         }); // the trailer video source
         
-        console.log("trying to play: ",movsrc, $appVideo);
+        //console.log("trying to play: ",movsrc, $appVideo);
         
         if($appVideo.is('video')){
-            $appVideo.attr("poster", movie.poster.location );
+            $appVideo.attr("poster", movie.poster.xlarge );
         }
         
         $appVideo
         .detach()
         .attr("src",movsrc)
         .appendTo('#ifr-templates');
-                        
-        console.log($appVideo);
     }
 	
     $("a.trailerLink")
@@ -256,7 +276,7 @@ ifr.getTrailerList = function(resolution,forceMode){
                     ifr.db.proc.importTrailers(DB.view);
                     ifr.buildTrailerUI();
                 }catch(ex){
-                    console.log(ex,DB.view);
+                    //console.log(ex,DB.view);
                     _queryExternalTrailerList();	
                 }
             }else{
