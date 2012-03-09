@@ -2,7 +2,7 @@
 
 .ifr {
 
-@font-family: "Lucida Grande", "Lucida Console", Arial, Helvetica, sans-serif;
+@font-family: "Lucida Grande", 'Asap', Arial, Helvetica, sans-serif;
 @appBgColor: black;
 @appTextColor: #dddddd;
 
@@ -24,7 +24,8 @@
      >  .config {
         @height: 35px;
          
-        padding:0 5px;
+        position:absolute;
+        width: 100%;
         top:-@height;
     	height:@height;
     	background-color:#666;
@@ -36,8 +37,6 @@
     	background-position:bottom;
     	moz-transform: translate(0pt, -20px);
     	perspective:1px;
-    	position:absolute;
-        width: 100%;
         
         &.visible {
             top:0px;

@@ -13,7 +13,7 @@
   color: #dddddd;
   height: 100%;
   position: relative;
-  font-family: "Lucida Grande", "Lucida Console", Arial, Helvetica, sans-serif;
+  font-family: "Lucida Grande", 'Asap', Arial, Helvetica, sans-serif;
   font-size: 13px;
   line-height: 1.2;
 }
@@ -24,7 +24,8 @@
   transition: top 0.2s ease-out;
 }
 .ifr > .config {
-  padding: 0 5px;
+  position: absolute;
+  width: 100%;
   top: -35px;
   height: 35px;
   background-color: #666;
@@ -36,8 +37,6 @@
   background-position: bottom;
   moz-transform: translate(0pt, -20px);
   perspective: 1px;
-  position: absolute;
-  width: 100%;
 }
 .ifr > .config.visible {
   top: 0px;
