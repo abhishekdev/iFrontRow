@@ -36,8 +36,8 @@
   background-position: bottom;
   moz-transform: translate(0pt, -20px);
   perspective: 1px;
-  overflow: hidden;
-  position: relative;
+  position: absolute;
+  width: 100%;
 }
 .ifr > .config.visible {
   top: 0px;
