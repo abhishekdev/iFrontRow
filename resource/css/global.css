@@ -17,6 +17,6 @@ html, body {
   background-color: rgba(0, 0, 0, 0.7) !important;
   opacity: 1 !important;
 }
-#fancybox-content {
+.fancybox-inner {
   background: #000000;
 }

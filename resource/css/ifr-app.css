@@ -1,11 +1,3 @@
-/**
-********************************************* 
-* @fileOverview A set of useful LESS mixins to create dynamic, effiecient and quick CSS
-* @description  Achieved using StyleLibrary 0.1 alpha
-* @author 		Abhishek Dev
-* @date			2011-May-15
-********************************************* 
-*/
 .ifr {
   min-width: 960px;
   min-height: 600px;
@@ -218,7 +210,7 @@
   box-shadow: 0 0 10px 5px #06F;
 }
 .ifr #rating {
-  background-image: url("../images/rating/rating_black_bg.png");
+  background-image: url("../images/icon/rating_black_bg.png");
   background-repeat: no-repeat;
   background-color: transparent;
   background-position: -50px 50px;

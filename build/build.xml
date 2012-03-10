@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<!DOCTYPE project>
+<project name="iFrontRow Build" default="build" basedir="../"> <!-- one back since we're in build/ -->
+
+
+    <!-- Load in Ant-Contrib to give us access to some very useful tasks! -->
+    <!-- the .jar file is located in the tools directory -->
+    <taskdef resource="net/sf/antcontrib/antlib.xml">
+        <classpath>
+            <pathelement location="${basedir}/build/tools/ant-contrib-1.0b3.jar"/>
+        </classpath>
+    </taskdef>
+
+    <!-- load shell environment -->
+    <property environment="ENV" />
+
+    <!-- load property files -->
+    <property file="build/config/project.properties"/>
+    <property file="build/config/default.properties"/>
+
+    <!-- merge the stylesheet properties -->
+    <var name="stylesheet-files" value="${file.default.stylesheets}, ${file.stylesheets}"/>
+
+    <!-- merge the pages properties -->
+    <var name="page-files" value="${file.pages}, ${file.pages.default.include}"/>
+
+    <!-- Test for Ant Version Delete this task and all instances of overwrite='no' if you can't upgrade to 1.8.2-->
+    <fail message="All features of the build script require Ant version 1.8.2. Please upgrade to 1.8.2 or remove all instances of 'overwrite=no' (and this fail task) from the build script to continue">
+        <condition>
+            <not>
+                <contains string="${ant.version}" substring="1.8.2"/>
+            </not>
+        </condition>
+    </fail>
+    
+    <echo message="Build Tools Path : ${dir.build.tools}"/>
+    
+    <taskdef name="jscomp" classname="com.google.javascript.jscomp.ant.CompileTask"
+             classpath="${dir.build.tools}/closure-compiler.jar"/>
+
+	
+    
+    <target name="build">
+        <mkdir dir="${dir.intermediate}"/>
+<!--        <copy todir="${dir.intermediate}" includeEmptyDirs="true">
+            <fileset dir="${dir.source}/" excludes="${file.default.exclude}, ${file.exclude}">
+                <type type="dir"/>
+            </fileset>
+        </copy>-->
+        <mkdir dir="${dir.publish}"/>
+<!--        <copy todir="${dir.publish}" includeEmptyDirs="true">
+            <fileset dir="${dir.source}/" excludes="${file.default.exclude}, ${file.exclude}">
+                <type type="dir"/>
+            </fileset>
+        </copy>-->
+        <antcall target="js.comp.cc"/>
+        <antcall target="js.concat"/>
+    </target>
+    
+    <target name="js.concat">
+        <concat destfile="./${dir.publish}/ifr-all.min.js" fixlastline="true">
+          <fileset dir="${basedir}/${dir.lib}/" includes="jquery.min.js"/>
+          <fileset dir="${basedir}/${dir.lib}/" includes="jQueryUI/jquery-ui.min.js"/>
+          <fileset dir="${basedir}/${dir.lib}/" includes="fancybox/jquery.fancybox.pack.js"/>
+          <fileset dir="${basedir}/${dir.intermediate}" includes="ifr-src.min.js"/>
+        </concat>
+    </target>
+	
+    <target name="js.comp.cc">
+        <jscomp compilationLevel="simple" warning="verbose" 
+                        debug="false" output="${dir.intermediate}/ifr-src.min.js">
+            <externs dir="${dir.build.tools}/JSexterns/">
+                <file name="jquery.js"/>
+            </externs>
+            <externs dir="${basedir}/resource/js/">
+                <file name="_externs.js"/>
+            </externs>
+            
+            <sources dir="${basedir}">
+                <file name="lib/eSlidenav/jquery.ad-eSlidenav.js"/>
+                <file name="resource/js/ifr-core.js"/>
+            </sources>
+        </jscomp>
+        
+      
+    </target>
+
+	<!-- Import project.xml (put any custom build targets in this file so that they aren't overwritten when build.xml is updated) -->
+    <import file="./project.xml" />
+
+</project>

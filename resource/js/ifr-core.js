@@ -11,17 +11,15 @@ MIT License @ http://bit.ly/abhishekdevMIT-License
 
 
 // core application namespace
-var ifr = {
+;var ifr = {
 		about: {
 			author: "Abhishek Dev",
-			version: "1.0.0",
-			credits: "GUI shamelessly adapted from the original Apple (c) FrontRow\n"+
-					  "iFrontRow name suggestion by Anshul Gupta (anshul10s)\n"
+			version: "1.0.0"
 		}
 	};
 
 // global debug flag for the application
-ifr.debug = 0;
+ifr.debug = false;
 
 // application db
 ifr.db = {
@@ -61,6 +59,10 @@ ifr.db.proc = {
 
 
 // build the trailer UI from data. Populate UI with info. Initialize events
+
+/**
+* @param {Object=} data
+*/
 ifr.buildTrailerUI = function(data){
     var items = [],
     video = {
@@ -120,7 +122,7 @@ ifr.buildTrailerUI = function(data){
         $poster = $movInfo.find(".poster"),
         $detail = $movInfo.find(".details");
 		
-        $poster.height( $detail.position().top - parseInt($detail.css("bottom")) );
+        $poster.height( $detail.position().top - parseInt($detail.css("bottom"),10) );
     }
     
     
@@ -192,6 +194,10 @@ ifr.buildTrailerUI = function(data){
     $(window).bind("resize.ifr", _resizePoster);	
     _resizePoster();
     
+    /**
+    * @param {string} key
+    * @param {RegExp=} mask
+    */
     function _getMovieURL(key, mask){
         return key.replace(/_h[0-9]{3}/,"_480");
     }
@@ -221,12 +227,14 @@ ifr.buildTrailerUI = function(data){
     $("a.trailerLink")
     .bind("click.ifr", _showTrailerOnLabelClick)
     .fancybox({
-        padding:0,
-        margin:0,
-        'transitionIn'	: 'elastic',
-        'transitionOut'	: 'elastic',
-        'speedIn'	: 600, 
-        'speedOut'	: 200, 
+         padding		: 0,
+         margin			: 0,
+        'openEffect'	: 'elastic',
+        'closeEffect'	: 'elastic',
+		'openEasing'	: 'easeInExpo',
+		'closeEasing'	: 'easeOutExpo',
+        'openSpeed'		: 600, 
+        'closeSpeed'	: 200, 
         'overlayShow'	: true
     });
     
@@ -250,6 +258,10 @@ ifr.loadMovieInfo = function(index){
     $("#movieInfo .cast").text(movie.cast ? movie.cast.name.toString(): "unlisted");
 };
 
+/**
+* @param {number=} resolution
+* @param {boolean=} forceMode
+*/
 ifr.getTrailerList = function(resolution,forceMode){
     var localStore = window.localStorage,
     DB={};
@@ -294,20 +306,12 @@ ifr.getTrailerList = function(resolution,forceMode){
     }
 };
 
-$(function main(){
-        
-    if(ifr.debug){
-        /* * /
-        Modernizr.load({
-            test: ifr.debug,
-            yep: ["offlineTestDB.js"],
-            complete: function(){
-
-            }
-        });
-        /* */
-        ifr.buildTrailerUI(offlineTestDB);
-    }else{
-        ifr.getTrailerList();
-    }
-});
+ifr.init = {
+	page: function mainpage(){    
+		if(ifr.debug && window.offlineTestDB){
+        	ifr.buildTrailerUI(offlineTestDB);
+    	}else{
+        	ifr.getTrailerList();
+    	}
+	}
+};

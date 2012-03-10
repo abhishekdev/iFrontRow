@@ -1,0 +1,4 @@
+var Modernizr = {},
+	offlineTestDB = {},
+	JSON = {};
+
