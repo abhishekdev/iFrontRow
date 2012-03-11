@@ -10,6 +10,16 @@ handlers:
   static_files: \1
   upload: (.*\.(gif|png|jpg|ico|js|css))
 
+# Home Page
+- url: /
+  script: ifrontrows.app
+
+# Index Page: redirects to Home Page
+- url: /index(\.htm(l?))?
+  script: ifrontrows.app
+
+# Any URL: Since there is no other portion of the app. All pages redirect to Home Page.
+# Showing 404 pages does not make sense at this time 
 - url: /.*
   script: ifrontrows.app
 
